@@ -4,42 +4,33 @@ import de.hska.iwi.ads.search.Search;
 
 public class BinarySearch<E extends Comparable<E>> implements Search<E> {
 
-    @Override
-    public int search(E[] a, E key, int left, int right) {
+  @Override
+  public int search(E[] a, E key, int left, int right) {
 
-        int ret = 0;
-        if (left > right) {
-            System.out.println("wut");
-            return 0;
-        }
-        int mid = (right + left) / 2;
-        int compared = key.compareTo(a[mid]);
-        if (compared == 0) {
-            ret = mid;
+    int mid;
+    int compare;
+
+    while (left <= right) {
+
+      if (key.compareTo(a[left]) < 0) {
+        if (key.compareTo(a[left - 1]) < 0) {
+          return left - 2;
         } else {
-            if (right == left + 1) {
-                int extracheck = a[right].compareTo(key);
-                if (extracheck == 0) {
-                    ret = right;
-                } else {
-                    if (compared == -1) {
-                        ret = left - 1;
-                    } else if (extracheck == 1) {
-                        ret = right + 1;
-                    } else {
-                        ret = right;
-                    }
-                }
-            } else {
-                if (compared == 1) {
-                    ret = search(a, key, mid + 1, right);
-                } else {
-                    ret = search(a, key, left, mid - 1);
-                }
-            }
+          return left - 1;
         }
-        return ret;
+      }
+      if (key.compareTo(a[right]) > 0)
+        return right + 1;
     }
-
-
+    mid = left + (right - left) / 2;
+    compare = key.compareTo(a[mid]);
+    if (compare == 0) {
+      return mid;
+    } else if (compare > 0) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+    return 0;
+  }
 }

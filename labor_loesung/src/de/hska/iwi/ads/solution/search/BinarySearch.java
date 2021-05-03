@@ -4,33 +4,49 @@ import de.hska.iwi.ads.search.Search;
 
 public class BinarySearch<E extends Comparable<E>> implements Search<E> {
 
-  @Override
-  public int search(E[] a, E key, int left, int right) {
+	@Override
+	public int search(E[] a, E key, int left, int right) {
 
-    int mid;
-    int compare;
+		int i = (left + right) / 2;
+// Sonderfall 1
+		if ( /* key < a[left] */ key.compareTo(a[left]) < 0) {
+			return left - 1;
+		}
+// Sonderfall 2
+		if ( /* key > a[right] */key.compareTo(a[right]) > 0) {
+			return right + 1;
+		}
+		if (key == a[i]) {
 
-    while (left <= right) {
+// gleiche Werte
+			if (i > 0 && a[i] == a[i - 1]) {
 
-      if (key.compareTo(a[left]) < 0) {
-        if (key.compareTo(a[left - 1]) < 0) {
-          return left - 2;
-        } else {
-          return left - 1;
-        }
-      }
-      if (key.compareTo(a[right]) > 0)
-        return right + 1;
-    }
-    mid = left + (right - left) / 2;
-    compare = key.compareTo(a[mid]);
-    if (compare == 0) {
-      return mid;
-    } else if (compare > 0) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
-    }
-    return 0;
-  }
+				return search(a, key, left, i--);
+			}
+			System.out.println(key + " an Position " + i + " enthalten.");
+			return i;
+		}
+			
+// Sonderfall 3
+				if (right-left==1) {
+					System.out.println("nummer nicht enthalten");
+					return left + 1;
+					
+				}
+// normale Binäre suche
+				if (/* key > a[i] */ key.compareTo(a[i]) > 0) {
+					return search(a, key, i, right);
+				} 
+				else if (/* key < a[i] */ key.compareTo(a[i]) < 0 && left != i) {
+					return search(a, key, left, i);
+				}
+		return i;
+
+	
+		
+
+	}
+	
+	
+
 }

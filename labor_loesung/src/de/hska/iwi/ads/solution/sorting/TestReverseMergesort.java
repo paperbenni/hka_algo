@@ -119,5 +119,19 @@ class TestReverseMergesort {
 		    assertArrayEquals(b, a);
 		  }
 	
+	@Test
+	  void arrayInt5() {
+		
+		Mergesort<Integer> sort = new Mergesort<>();
+	    Integer [] a = {1 ,3,2,3,5 };
+	    Integer [] b = {1 ,2 ,3,3,5  };
+	    sort.sort(a);
+	    System.out.println("3.=");
+	    for (int i = 0; i < a.length; i++) {
+	    	System.out.print(a[i]+",");
+		} 
+	    assertArrayEquals(b, a);
+	  }
+	
 
 }

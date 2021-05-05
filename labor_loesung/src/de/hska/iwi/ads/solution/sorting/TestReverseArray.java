@@ -46,4 +46,31 @@ class TestReverseArray {
 	 	assertArrayEquals(b, a);
 	}
 
+	@Test
+	void test5() {
+		ReverseArray<Integer> rev = new ReverseArray<>();
+		Integer [] a = {1 ,2 ,3 ,4 ,5 ,6, 7, 8, 9, 10, 11, 12, 13 };
+		Integer [] b = {1 ,2 ,3 ,4 ,5 ,7, 6, 8, 9, 10, 11, 12, 13 };
+	    rev.reverse(a, 5, 6);
+	 	assertArrayEquals(b, a);
+	}
+
+	@Test
+	void test6() {
+		ReverseArray<Integer> rev = new ReverseArray<>();
+		Integer [] a = {1};
+		Integer [] b = {1};
+	    rev.reverse(a, 0, 0);
+	 	assertArrayEquals(b, a);
+	}
+
+	@Test
+	void test7() {
+		ReverseArray<Integer> rev = new ReverseArray<>();
+		Integer [] a = {1, 2, 3};
+		Integer [] b = {1, 2, 3};
+	    rev.reverse(a, 0, 0);
+	 	assertArrayEquals(b, a);
+	}
+
 }

@@ -10,9 +10,7 @@ import de.hska.iwi.ads.sorting.Reverse;
 
 public class ReverseArray<E extends Comparable<E>> implements Reverse<E> {
 
-	public ReverseArray() {
-		// TODO Auto-generated constructor stub
-	}
+	public ReverseArray() {}
 
 	@Override
 	public void reverse(E[] a, int from, int to) {

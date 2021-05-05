@@ -9,7 +9,6 @@ package de.hska.iwi.ads.solution.sorting;
 
 public class Mergesort<E extends Comparable<E>> extends AbstractitoMergesort<E> {
 
-
 	protected void melt(E[] a,int left ,int m,int right) {
 		int l=left;
 		int r = m+1;

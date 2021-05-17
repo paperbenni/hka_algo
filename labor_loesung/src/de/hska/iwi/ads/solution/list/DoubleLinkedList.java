@@ -10,6 +10,11 @@ import java.util.AbstractMap.SimpleEntry;
 
 public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDoubleLinkedList<K, V> {
 
+
+	public DoubleLinkedList() {
+		size=0;
+	}
+
     public V get(Object o) {
         @SuppressWarnings("unchecked")
         K searchkey = (K) o;
@@ -34,6 +39,7 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
     }
 
     public V put(K key, V value) {
+    	size++;
         if (this.head == null) {
             SimpleEntry<K, V> newentry = new SimpleEntry<>(key, value);
             ListElement newelement = new ListElement(newentry, null, this.head);

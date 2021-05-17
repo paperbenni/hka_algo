@@ -58,7 +58,7 @@ class TestMergesort {
 	}
 
 	@Test
-	void arrayInt3() {
+	void arrayInt4() {
 
 		Mergesort<Integer> sort = new Mergesort<>();
 		Integer[] a = { 1, 20, 200, 2000, 20000, 300, 356, 123 };
@@ -72,7 +72,7 @@ class TestMergesort {
 	}
 
 	@Test
-	void arrayInt4() {
+	void arrayInt5() {
 
 		Mergesort<Integer> sort = new Mergesort<>();
 		Integer[] a = { 1 };
@@ -87,7 +87,7 @@ class TestMergesort {
 
 
 	@Test
-	void arrayInt5() {
+	void arrayInt6() {
 
 		Mergesort<Integer> sort = new Mergesort<>();
 		Integer[] a = { 1 };

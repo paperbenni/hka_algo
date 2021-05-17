@@ -39,8 +39,9 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
     }
 
     public V put(K key, V value) {
-    	size++;
+
         if (this.head == null) {
+        	size++;
             SimpleEntry<K, V> newentry = new SimpleEntry<>(key, value);
             ListElement newelement = new ListElement(newentry, null, this.head);
             this.head = newelement;
@@ -49,9 +50,11 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
         V a = null;
         ListElement checker = find(key);
         if (checker != null) {
+        	
             a = checker.entry.getValue();
             checker.entry.setValue(value);
         } else {
+        	size++;
             SimpleEntry<K, V> newentry = new SimpleEntry<>(key, value);
             ListElement newelement = new ListElement(newentry, null, this.head);
             newelement.next = this.head;

@@ -18,7 +18,13 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
     public V get(Object o) {
         @SuppressWarnings("unchecked")
         K searchkey = (K) o;
-        return find(searchkey).entry.getValue();
+        ListElement test =  find(searchkey); 
+        if(test == null) {
+        	return null;
+        }
+        else {
+        	return test.entry.getValue();
+        }
     }
 
     private ListElement find(K key) {

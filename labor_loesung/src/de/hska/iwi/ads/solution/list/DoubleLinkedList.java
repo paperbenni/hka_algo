@@ -1,3 +1,9 @@
+
+/**
+ * @author wejo1037
+ */
+
+
 package de.hska.iwi.ads.solution.list;
 
 import de.hska.iwi.ads.dictionary.AbstractDoubleLinkedList;

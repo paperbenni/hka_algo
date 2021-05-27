@@ -10,13 +10,20 @@ public class Hashtable<K extends Comparable<K>,V> extends AbstractHashMap<K, V> 
 	}
 	public V get(Object o) {
 		K key = (K)o;
+		V ret;
 		int keyHash = key.hashCode();
-		V ret = hashtable[keyHash].getValue();
+		while(hashtable[keyHash].getKey()!=key) {
+			keyHash=keyHash*keyHash%hashtable.length;
+		}
+
+			ret = hashtable[keyHash].getValue();
+			
 		if(ret==null) {
 			return null;
 		}
 		return ret;
 	}
+	
 	
 	
 	

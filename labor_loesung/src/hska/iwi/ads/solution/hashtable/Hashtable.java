@@ -11,50 +11,43 @@ public class Hashtable<K extends Comparable<K>,V> extends AbstractHashMap<K, V> 
 	public V get(Object o) {
 		K key = (K)o; 						// key wird zu K gecastet
 		int i =0;
-		int keyHash = Math.abs(key.hashCode()%hashtable.length);// hash berechnen
-		if (hashtable[keyHash]==null) {
-			return null;
-		}
-		while(hashtable[keyHash].getKey()!=key&& i<hashtable.length) {
-			i++;
-			keyHash=quadtatischSondiere(keyHash);
-		}
-		if(i>=hashtable.length) {
-			return null;
-		}
-			return hashtable[keyHash].getValue();
+		int keyHash;
+		do {
+			keyHash= quadtatischSondiere( i,key);
+			if (hashtable[keyHash]!=null&&hashtable[keyHash].getKey()==key) {
+				return hashtable[keyHash].getValue();
 
+			}
+			i++;
+		} while (hashtable[keyHash]!=null&& i<hashtable.length);
+		return null;
 	}
 	
 
 	public V put(K key, V value) {
-		
-		int keyHash = Math.abs(key.hashCode()%hashtable.length);
+		V ret;
+		int keyHash; 
 		int i =0;
-		V ret = value;
-		if (hashtable[keyHash]==null||hashtable[keyHash].getKey()==null) {
-		SimpleEntry<K,V> newEntry =  new SimpleEntry<>(key,value);
-		hashtable[keyHash] = newEntry;
-		}
-		else {
-			while(hashtable[keyHash].getKey()!=key&& i<hashtable.length) {
-				i++;
-				keyHash=quadtatischSondiere(keyHash);
+		do {
+			keyHash = quadtatischSondiere(i, key);	
+			
+			if (hashtable[keyHash]==null||hashtable[keyHash].getKey()==null) {
+				SimpleEntry<K,V> newEntry =  new SimpleEntry<>(key,value);
+				hashtable[keyHash] = newEntry;
 			}
+			if (hashtable[keyHash].getKey()==key) {
+				SimpleEntry<K,V> newEntry =  new SimpleEntry<>(key,value);
+				ret = hashtable[keyHash].getValue();
+				hashtable[keyHash] = newEntry;
+				return ret;
+			}
+			i++;
+		} while (hashtable[keyHash]!=null&&i<hashtable.length);
+		return null;
 
-			SimpleEntry<K,V> newEntry =  new SimpleEntry<>(key,value);
-			ret = hashtable[keyHash].getValue();
-			hashtable[keyHash] = newEntry;
-		}
-		return ret;
-		
 	}
-	private int quadtatischSondiere(int hash) {
-		return Math.abs((hash*hash)%hashtable.length);
-	}
-	
-	public void delete(Object o) {
-		throw new UnsupportedOperationException("Was mein ist bleibt auch mein !");
+	private int quadtatischSondiere(int i, K key) {
+		return (key.hashCode()+i*i)%hashtable.length;
 	}
 	
 	
@@ -63,6 +56,7 @@ public class Hashtable<K extends Comparable<K>,V> extends AbstractHashMap<K, V> 
 		Map.put(1, "Gärster");
 		Map.put(1, "Müller");
 		Map.put(123, "Riese");
+		Map.put(1, "Heino");
 		
 		System.out.println(Map.get(1));
 		System.out.println(Map.get(123));

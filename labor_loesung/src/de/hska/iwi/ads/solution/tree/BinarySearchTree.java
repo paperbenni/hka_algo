@@ -6,14 +6,14 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
     public V put(K key, V value) {
         int compare = 0;
         Node newnode = new Node(key, value);
+
+        Node checknode = root;
         if (root == null) {
             root = newnode;
             return null;
         }
-
-        Node checknode = root;
         while (true) {
-            compare = checknode.left.entry.getKey().compareTo(key);
+            compare = checknode.entry.getKey().compareTo(key);
             if (compare == 0) {
                 V ret = checknode.entry.getValue();
                 checknode.entry.setValue(value);
@@ -39,14 +39,15 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
 
     }
 
-    public V get(K key) {
+    public V get(Object o) {
+        K key = (K)o;
         int compare;
         Node checknode = root;
         while (true) {
             if (checknode == null) {
                 return null;
             }
-            compare = checknode.left.entry.getKey().compareTo(key);
+            compare = checknode.entry.getKey().compareTo(key);
             if (compare == 0) {
                 return checknode.entry.getValue();
             } else if (compare < 0) {
@@ -55,5 +56,10 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
                 checknode = checknode.right;
             }
         }
+    }
+    public static void main(String[] args) {
+        BinarySearchTree<Integer, String> tree = new BinarySearchTree<>();
+        tree.put(1, "eins");
+        System.out.println(tree.get(1));
     }
 }

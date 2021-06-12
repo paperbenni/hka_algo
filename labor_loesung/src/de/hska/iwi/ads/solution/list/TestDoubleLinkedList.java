@@ -26,14 +26,14 @@ class TestDoubleLinkedList<K extends Comparable<K>,V> extends MapTest {
 	void test1() {
 	    Map<Integer, String> dictionary = createMap();
 	    
-	    dictionary.put(5, "Fünf");
+	    dictionary.put(5, "FÃ¼nf");
 	    dictionary.put(3, "Drei");
 	    dictionary.put(7, "Vier");
 	    dictionary.put(11, "Elf");
 	    dictionary.put(1, "Eins");
 	    dictionary.put(9, "Neun");
 	    assertEquals(6, dictionary.size());
-	    assertEquals("Fünf", dictionary.get(5));
+	    assertEquals("Fï¿½nf", dictionary.get(5));
 	  }
 
 }

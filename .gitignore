@@ -86,3 +86,5 @@ local.properties
 #.project
 
 tags
+/labor/build/
+/algo_loesungen/build/

@@ -34,8 +34,8 @@ public class Hashtable<K extends Comparable<K>,V> extends AbstractHashMap<K, V> 
 			if (hashtable[keyHash]==null||hashtable[keyHash].getKey()==null) {
 				SimpleEntry<K,V> newEntry =  new SimpleEntry<>(key,value);
 				hashtable[keyHash] = newEntry;
-			}
-			if (hashtable[keyHash].getKey()==key) {
+				return null;
+			} else if (hashtable[keyHash].getKey()==key) {
 				SimpleEntry<K,V> newEntry =  new SimpleEntry<>(key,value);
 				ret = hashtable[keyHash].getValue();
 				hashtable[keyHash] = newEntry;
@@ -43,7 +43,7 @@ public class Hashtable<K extends Comparable<K>,V> extends AbstractHashMap<K, V> 
 			}
 			i++;
 		} while (hashtable[keyHash]!=null&&i<hashtable.length);
-		return null;
+		throw new de.hska.iwi.ads.dictionary.AbstractDictionary.DictionaryFullException();
 
 	}
 	private int quadtatischSondiere(int i, K key) {

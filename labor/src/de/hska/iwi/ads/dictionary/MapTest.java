@@ -22,32 +22,32 @@ public abstract class MapTest {
   */
  public abstract <K extends Comparable<K>, V> Map<K,V> createMap();
  
-   private Map<Integer, String> commonTestMap;
+   private Map<Integer, String> Tree;
    
    @BeforeEach
    void setUp() {
      // Map with 1,2,3,4, 6,7,8
-     commonTestMap = createMap();
-     commonTestMap.put(6, "Sechs");
-     commonTestMap.put(3, "Drei");
-     commonTestMap.put(1, "Eins");
-     commonTestMap.put(7, "Sieben");
-     commonTestMap.put(8, "Acht");
-     commonTestMap.put(4, "Vier");
-     commonTestMap.put(2, "Zwei");
+     Tree = createMap();
+     Tree.put(6, "Sechs");
+     Tree.put(3, "Drei");
+     Tree.put(1, "Eins");
+     Tree.put(7, "Sieben");
+     Tree.put(8, "Acht");
+     Tree.put(4, "Vier");
+     Tree.put(2, "Zwei");
    }
    
    @Test 
    void commonTestDictionary() {
-     assertNotNull(commonTestMap);
-     assertEquals(7, commonTestMap.size());
-     assertEquals("Eins", commonTestMap.get(1));
-     assertEquals("Zwei", commonTestMap.get(2));
-     assertEquals("Drei", commonTestMap.get(3));
-     assertEquals("Vier", commonTestMap.get(4));
-     assertEquals("Sechs", commonTestMap.get(6));
-     assertEquals("Sieben", commonTestMap.get(7));
-     assertEquals("Acht", commonTestMap.get(8));
+     assertNotNull(Tree);
+     assertEquals(7, Tree.size());
+     assertEquals("Eins", Tree.get(1));
+     assertEquals("Zwei", Tree.get(2));
+     assertEquals("Drei", Tree.get(3));
+     assertEquals("Vier", Tree.get(4));
+     assertEquals("Sechs", Tree.get(6));
+     assertEquals("Sieben", Tree.get(7));
+     assertEquals("Acht", Tree.get(8));
    }
    
    @Test
@@ -86,55 +86,55 @@ public abstract class MapTest {
 
   @Test
   void testPut() {
-    commonTestMap.put(9, "Neun");
-    assertEquals(8, commonTestMap.size());    
-    assertEquals("Neun", commonTestMap.get(9));
+    Tree.put(9, "Neun");
+    assertEquals(8, Tree.size());    
+    assertEquals("Neun", Tree.get(9));
   }
   
   @Test
   void testPut2() {
-    commonTestMap.put(9, "Neun");
-    commonTestMap.put(5, "Fünf");
-    assertEquals(9, commonTestMap.size());    
-    assertEquals("Neun", commonTestMap.get(9));
-    assertEquals("Fünf", commonTestMap.get(5));
+    Tree.put(9, "Neun");
+    Tree.put(5, "Fünf");
+    assertEquals(9, Tree.size());    
+    assertEquals("Neun", Tree.get(9));
+    assertEquals("Fünf", Tree.get(5));
   }
   
   @Test
   void testPut3() {
-    commonTestMap.put(9, "Neun");
-    commonTestMap.put(5, "Fünf");
-    commonTestMap.put(2, "Two");
-    commonTestMap.put(9, "Neun");
+    Tree.put(9, "Neun");
+    Tree.put(5, "Fünf");
+    Tree.put(2, "Two");
+    Tree.put(9, "Neun");
     
-    assertEquals(9, commonTestMap.size());    
-    assertEquals("Neun", commonTestMap.get(9));
-    assertEquals("Fünf", commonTestMap.get(5));
+    assertEquals(9, Tree.size());    
+    assertEquals("Neun", Tree.get(9));
+    assertEquals("Fünf", Tree.get(5));
   }
   
   @Test
   void testGet() {
-    assertNull(commonTestMap.get(5));
+    assertNull(Tree.get(5));
   }
   
   @Test
   void testGet1() {
-    assertEquals("Sieben", commonTestMap.get(7));
+    assertEquals("Sieben", Tree.get(7));
   }
   
   @Test
   void testGet2() {
-    assertEquals("Sechs", commonTestMap.get(6));
+    assertEquals("Sechs", Tree.get(6));
   }
   
   @Test
   void testGetNull() {
-    assertThrows(NullPointerException.class, () -> commonTestMap.get(null));
+    assertThrows(NullPointerException.class, () -> Tree.get(null));
   }
   
   @Test
   void testPutNull() {
-    assertThrows(NullPointerException.class, () -> commonTestMap.put(null, "Null"));
+    assertThrows(NullPointerException.class, () -> Tree.put(null, "Null"));
   }
   
 

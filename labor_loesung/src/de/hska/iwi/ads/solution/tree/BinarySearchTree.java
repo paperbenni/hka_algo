@@ -1,3 +1,7 @@
+/**
+ * @author scbe1048
+ */
+
 package de.hska.iwi.ads.solution.tree;
 
 import de.hska.iwi.ads.dictionary.AbstractBinaryTree;

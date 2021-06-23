@@ -14,6 +14,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
         Node checknode = root;
         if (root == null) {
             root = newnode;
+            this.size = 1;
             return null;
         }
         while (true) {
@@ -26,6 +27,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
                 if (compare < 0) {
                     if (checknode.left == null) {
                         checknode.left = newnode;
+                        this.size++;
                         return null;
                     } else {
                         checknode = checknode.left;
@@ -33,6 +35,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
                 } else {
                     if (checknode.right == null) {
                         checknode.right = newnode;
+                        this.size++;
                         return null;
                     } else {
                         checknode = checknode.right;
@@ -40,7 +43,6 @@ public class BinarySearchTree<K extends Comparable<K>, V> extends AbstractBinary
                 }
             }
         }
-
     }
 
     public V get(Object o) {

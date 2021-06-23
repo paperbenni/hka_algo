@@ -13,18 +13,17 @@ import org.junit.jupiter.api.Test;
 
 import de.hska.iwi.ads.dictionary.MapTest;
 
-class TestDoubleLinkedList<K extends Comparable<K>,V> extends MapTest {
+class TestDoubleLinkedList extends de.hska.iwi.ads.dictionary.MapTest {
 
-
+	private Map<Integer, String> dictionary;
 	@Override
-	public <K extends Comparable<K>, V> Map<K, V> createMap() {
-		// TODO Auto-generated method stub
-		return new DoubleLinkedList<K,V>();
+	public Map<Integer,String> createMap() {
+		return new DoubleLinkedList<>();
 	}
 	
 	@Test
 	void test1() {
-	    Map<Integer, String> dictionary = createMap();
+	    dictionary = createMap();
 	    
 	    dictionary.put(5, "Fünf");
 	    dictionary.put(3, "Drei");
@@ -33,7 +32,7 @@ class TestDoubleLinkedList<K extends Comparable<K>,V> extends MapTest {
 	    dictionary.put(1, "Eins");
 	    dictionary.put(9, "Neun");
 	    assertEquals(6, dictionary.size());
-	    assertEquals("F�nf", dictionary.get(5));
+	    assertEquals("Fünf", dictionary.get(5));
 	  }
 
 }
